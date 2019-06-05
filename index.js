@@ -11,17 +11,24 @@ illoElem.setAttribute( 'height', h * zoom );
 
 // create illo
 let illo = new Zdog.Illustration({
-    // set canvas with selector
     element: illoElem,
 });
 
 // add circle
 new Zdog.Ellipse({
     addTo: illo,
-    diameter: 80,
-    stroke: 20,
+    diameter: 100,
+    stroke: 30,
     color: '#636',
 });
+
+function animate() {
+    illo.rotate.y += 0.01;
+    illo.updateRenderGraph();
+    requestAnimationFrame(animate);
+}
+
+animate();
 
 // update & render
 illo.updateRenderGraph();
